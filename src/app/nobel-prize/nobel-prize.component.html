@@ -1,0 +1,113 @@
+<div class="columns is-centered">
+    <div class="column is-one-quarters">
+        <h3 class="title">Filters</h3>
+
+        <div class="field">
+            <label class="label">Year</label>
+            <p class="control">
+                <input class="input" type="text" maxlength="4" [(ngModel)]="filterableYear">
+            </p>
+        </div>
+
+        <div class="field">
+            <label class="label">Category</label>
+            <p class="control is-expanded">
+                <span class="select is-fullwidth">
+                    <select name="country" [(ngModel)]="filterableCategory">
+                        <option value="all" selected="selected">All</option>
+                        <option value="{{ category }}" *ngFor="let category of categories">{{ category | capitalize }}</option>
+                    </select>
+                </span>
+            </p>
+        </div>
+
+        <div class="field">
+            <label class="label">Firstname</label>
+            <p class="control">
+                <input class="input" type="text" [(ngModel)]="filterableFirstname">
+            </p>
+        </div>
+
+        <div class="field">
+            <label class="label">Surname</label>
+            <p class="control">
+                <input class="input" type="text" [(ngModel)]="filterableSurname">
+            </p>
+        </div>
+
+        <div class="field mt-10">
+            <a class="button is-info is-outlined is-full-width"
+               (click)="resetFilters()"
+            >Reset</a>
+        </div>
+    </div>
+
+    <div class="column is-three-quarters">
+        <div class="heading">
+            <table class="table is-bordered is-striped is-narrow">
+                <thead>
+                <tr>
+                    <th class="one-quarter th-padding link"
+                        (click)="sortBy('year')"
+                    >
+                        <i class="fa {{ isSortBy('year') }} fa-md"
+                           aria-hidden="true"></i>
+                        Year
+                    </th>
+                    <th class="one-quarter th-padding link"
+                        (click)="sortBy('category')"
+                    >
+                        <i class="fa {{ isSortBy('category') }} fa-md"
+                           aria-hidden="true"></i>
+                        Category
+                    </th>
+                    <th class="one-quarter th-padding link"
+                        (click)="sortBy('firstname')"
+                    >
+                        <i class="fa {{ isSortBy('firstname') }} fa-md"
+                           aria-hidden="true"></i>
+                        Firstname
+                    </th>
+                    <th class="one-quarter th-padding link"
+                        (click)="sortBy('surname')"
+                    >
+                        <i class="fa {{ isSortBy('surname') }} fa-md"
+                           aria-hidden="true"></i>
+                        Surname
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prize of (prizes
+                            | filterYear: filterableYear
+                            | filterCategory: filterableCategory
+                            | filterFirstname: filterableFirstname
+                            | filterSurname: filterableSurname
+                        ) | sortBy: sortable.name:sortable.direction"
+                    >
+                        <td>
+                            <a class="is-table-link"
+                               (click)="filterableYear = prize.year"
+                            >{{ prize.year }}</a>
+                        </td>
+                        <td>
+                            <a class="is-table-link"
+                               (click)="filterableCategory = prize.category"
+                            >{{ prize.category }}</a>
+                        </td>
+                        <td>
+                            <a class="is-table-link"
+                               (click)="filterableFirstname = prize.firstname"
+                            >{{ prize.firstname }}</a>
+                        </td>
+                        <td>
+                            <a class="is-table-link"
+                               (click)="filterableSurname = prize.surname"
+                            >{{ prize.surname }}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

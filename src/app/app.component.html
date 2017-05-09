@@ -1,0 +1,32 @@
+<nav class="nav has-shadow"
+     *ngIf="data.authorized"
+>
+    <div class="container">
+        <div class="nav-left">
+            <a class="nav-item fs-20">
+                {{ data.title }}
+            </a>
+        </div>
+        <span class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="nav-right nav-menu">
+            <a class="nav-item is-tab"
+               (click)="data.authorized = false"
+            >Log out</a>
+        </div>
+    </div>
+</nav>
+
+<section class="section">
+    <div class="container">
+        <div class="content"
+             [ngSwitch]="data.authorized"
+        >
+            <app-login *ngSwitchCase="false"></app-login>
+            <app-nobel-prize *ngSwitchCase="true"></app-nobel-prize>
+        </div>
+    </div>
+</section>

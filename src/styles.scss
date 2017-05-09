@@ -1,0 +1,54 @@
+/*****************/
+/* font-awesome. */
+/*****************/
+@import '~font-awesome/css/font-awesome.css';
+
+/********************/
+/* Bulma framework. */
+/********************/
+@import '~bulma/bulma';
+
+/*****************/
+/* Custom style. */
+/*****************/
+.is-centered-wh {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.mt-10 {
+    margin-top: 10%;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.one-quarter {
+    width: 25%;
+}
+
+.th-padding {
+    padding: 10px 4px !important;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.fa-md {
+    font-size: 15px;
+}
+
+.is-full-width {
+    width: 100%;
+}
+
+.is-table-link {
+    color: #363636;
+}
+
+.is-table-link:hover {
+    color: $info;
+}
